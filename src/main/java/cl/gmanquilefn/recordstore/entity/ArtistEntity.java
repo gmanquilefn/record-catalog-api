@@ -19,9 +19,6 @@ public class ArtistEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "artist_code")
-    private String artistCode;
-
     @OneToMany(mappedBy = "artistId")
     private Set<RecordEntity> records;
 }
