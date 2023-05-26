@@ -1,14 +1,14 @@
 package cl.gmanquilefn.recordstore.model;
 
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
-@AllArgsConstructor
 @Getter
+@Setter
 @ToString
-public class Record {
+public class RecordDTO {
 
     @NotNull(message = "'artistId' must not be null")
     private Integer artistId;

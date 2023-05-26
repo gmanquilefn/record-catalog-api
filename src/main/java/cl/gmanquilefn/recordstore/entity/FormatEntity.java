@@ -14,7 +14,7 @@ public class FormatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "format_id")
-    private Long id;
+    private Integer id;
 
     @Column(name = "description")
     private String description;

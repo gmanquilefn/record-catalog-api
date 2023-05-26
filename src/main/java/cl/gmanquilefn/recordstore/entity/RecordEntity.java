@@ -12,7 +12,7 @@ public class RecordEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "record_id")
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "artist_id")
