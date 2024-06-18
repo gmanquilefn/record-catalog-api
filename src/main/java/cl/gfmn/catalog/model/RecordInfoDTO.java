@@ -1,4 +1,4 @@
-package cl.gmanquilefn.recordstore.model;
+package cl.gfmn.catalog.model;
 
 import java.util.List;
 

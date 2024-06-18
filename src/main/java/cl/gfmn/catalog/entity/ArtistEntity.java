@@ -1,4 +1,4 @@
-package cl.gmanquilefn.recordstore.entity;
+package cl.gfmn.catalog.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package cl.gmanquilefn.recordstore.repository;
+package cl.gfmn.catalog.repository;
 
-import cl.gmanquilefn.recordstore.entity.RecordEntity;
+import cl.gfmn.catalog.entity.RecordEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
