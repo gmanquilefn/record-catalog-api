@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    record-catalog-db:
+        container_name: record-catalog-db
+        image: postgres:latest
+        restart: always
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: recordcatalog
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./recordcatalogdb:/var/lib/postgresql/data

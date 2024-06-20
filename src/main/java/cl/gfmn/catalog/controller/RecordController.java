@@ -1,9 +1,10 @@
 package cl.gfmn.catalog.controller;
 
-import cl.gfmn.catalog.model.RecordDTO;
-import cl.gfmn.catalog.model.RecordInfoDTO;
+import cl.gfmn.catalog.model.Record;
+import cl.gfmn.catalog.model.RecordInfo;
 import cl.gfmn.catalog.model.Response;
 import cl.gfmn.catalog.service.RecordService;
+import com.google.gson.Gson;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -16,6 +17,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @OpenAPIDefinition(
         info = @Info(
@@ -31,33 +35,36 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class RecordController {
 
-    private static final Logger log = LoggerFactory.getLogger(RecordController.class);
+    private static final Logger logger = LoggerFactory.getLogger(RecordController.class);
 
     private final RecordService recordService;
 
+    private final Gson gson = new Gson();
+
     @Operation(summary = "Allows you to create a record registry in database")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Response> addRecord(@Valid @RequestBody RecordDTO recordDTO) {
+    public ResponseEntity<Response> addRecord(@Valid @RequestBody Record request) {
 
-        log.info("Begin endpoint consumption POST Record, Request: {}", recordDTO);
+        logger.info("Begin endpoint consumption POST Record, request = {}", gson.toJson(request));
 
-        Response response = recordService.addRecord(recordDTO);
+        Response response = recordService.addRecord(request);
 
-        log.info("End endpoint consumption POST Record, Response: {}", response);
+        logger.info("End endpoint consumption POST Record, Response: {}", response);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Allows yo to get information of all records in database")
-    public ResponseEntity<RecordInfoDTO> getRecords() {
+    public ResponseEntity<List<RecordInfo>> getRecords() {
 
-        log.info("Begin endpoint consumption GET Records");
+        logger.info("Begin endpoint consumption GET Records");
 
-        RecordInfoDTO recordInfoDTO = new RecordInfoDTO(recordService.getRecords());
+        //List<RecordInfo> records = recordService.getRecords();
+        List<RecordInfo> records = new ArrayList<>();
 
-        log.info("Begin endpoint consumption GET Records, Response: {}", recordInfoDTO);
+        logger.info("Begin endpoint consumption GET Records, Response: {}", gson.toJson(records));
 
-        return new ResponseEntity<>(recordInfoDTO, HttpStatus.OK);
+        return new ResponseEntity<>(records, HttpStatus.OK);
     }
 }

@@ -8,9 +8,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class RecordDTO {
+public class Record {
 
-    @NotNull(message = "'artistId' must not be null")
+    @NotNull(message = "artist_id must not be null")
     private Integer artist_id;
 
     @NotNull(message = "'formatId' must not be null")

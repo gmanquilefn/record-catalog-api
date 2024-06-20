@@ -36,6 +36,7 @@ public class CustomExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(InvalidRequestDataException.class)
     public final ResponseEntity<ErrorResponse> handle400Exceptions(RuntimeException ex, HttpServletRequest request) {
         ErrorResponse response = new ErrorResponse(
                 LocalDateTime.now().toString(),

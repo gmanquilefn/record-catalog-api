@@ -6,8 +6,7 @@ import lombok.Data;
 import java.util.Set;
 
 @Entity
-@Cacheable
-@Table(name = "Artist")
+@Table(name = "artist")
 @Data
 public class ArtistEntity {
 
@@ -16,9 +15,18 @@ public class ArtistEntity {
     @Column(name = "artist_id")
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "code")
+    private String code;
 
-    @OneToMany(mappedBy = "artistId")
-    private Set<RecordEntity> records;
+    @Column(name = "alias")
+    private String alias;
+
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "description")
+    private String description;
+
+    @OneToMany(mappedBy = "artist")
+    private Set<AlbumEntity> albums;
 }

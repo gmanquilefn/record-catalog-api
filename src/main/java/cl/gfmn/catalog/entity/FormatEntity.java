@@ -6,8 +6,7 @@ import lombok.Data;
 import java.util.Set;
 
 @Entity
-@Cacheable
-@Table(name = "Format")
+@Table(name = "format")
 @Data
 public class FormatEntity {
 
@@ -16,10 +15,12 @@ public class FormatEntity {
     @Column(name = "format_id")
     private Integer id;
 
+    @Column(name = "format")
+    private String format;
+
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "formatId")
-     private Set<RecordEntity> records;
-
+    @OneToMany(mappedBy = "format")
+     private Set<AlbumReleaseEntity> AlbumReleases;
 }
