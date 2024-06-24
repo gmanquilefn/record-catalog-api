@@ -40,7 +40,7 @@ public class RecordService {
 //
 //        recordRepo.save(record);
 
-        return setDataResponseOK();
+        return null;
     }
 
 //    public List<RecordInfo> getRecords() {
@@ -58,9 +58,9 @@ public class RecordService {
 //                .collect(Collectors.toList());
 //    }
 
-    private Response setDataResponseOK() {
-        return new Response(LocalDateTime.now().toString(),
-                HttpStatus.OK.value(),
-                "OK");
-    }
+//    private Response setDataResponseOK() {
+//        return new Response(LocalDateTime.now().toString(),
+//                HttpStatus.OK.value(),
+//                "OK");
+//    }
 }

@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.time.LocalDateTime;
-
 @ControllerAdvice
 public class CustomExceptionHandler {
 
@@ -25,8 +23,6 @@ public class CustomExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public final ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex, HttpServletRequest request) {
         ErrorResponse response = new ErrorResponse(
-                LocalDateTime.now().toString(),
-                HttpStatus.BAD_REQUEST.value(),
                 ex.getBindingResult().getAllErrors().get(0).getDefaultMessage(),
                 request.getRequestURI());
 
@@ -36,11 +32,12 @@ public class CustomExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(InvalidRequestDataException.class)
+    @ExceptionHandler({
+            IllegalArgumentException.class,
+            InvalidRequestDataException.class
+    })
     public final ResponseEntity<ErrorResponse> handle400Exceptions(RuntimeException ex, HttpServletRequest request) {
         ErrorResponse response = new ErrorResponse(
-                LocalDateTime.now().toString(),
-                HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
                 request.getRequestURI());
 
@@ -55,8 +52,6 @@ public class CustomExceptionHandler {
     })
     public final ResponseEntity<ErrorResponse> handle404Exceptions(RuntimeException ex, HttpServletRequest request) {
         ErrorResponse response = new ErrorResponse(
-                LocalDateTime.now().toString(),
-                HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 request.getRequestURI());
 
@@ -69,8 +64,6 @@ public class CustomExceptionHandler {
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorResponse> handleAllExceptions(Exception ex, HttpServletRequest request) {
         ErrorResponse response = new ErrorResponse(
-                LocalDateTime.now().toString(),
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 ex.getMessage(),
                 request.getRequestURI());
 
