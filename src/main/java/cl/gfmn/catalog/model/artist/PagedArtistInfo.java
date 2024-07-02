@@ -1,4 +1,4 @@
-package cl.gfmn.catalog.model;
+package cl.gfmn.catalog.model.artist;
 
 import java.util.List;
 

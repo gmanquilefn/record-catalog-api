@@ -29,4 +29,14 @@ public class ArtistEntity {
 
     @OneToMany(mappedBy = "artist")
     private Set<AlbumEntity> albums;
+
+    public ArtistEntity(String code, String alias, String country, String description) {
+        this.code = code;
+        this.alias = alias;
+        this.country = country;
+        this.description = description;
+    }
+
+    public ArtistEntity() {
+    }
 }
