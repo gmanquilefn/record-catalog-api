@@ -67,7 +67,7 @@ public class ArtistController {
 
     @Operation(summary = "Deletes artists in bulk")
     @DeleteMapping(path = "/bulk", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<DeleteArtistsResponse> deleteArtists(@RequestBody DeleteArtistRequest request) {
+    public ResponseEntity<DeleteArtistsResponse> deleteArtists(@RequestBody DeleteArtistsRequest request) {
         logger.info("Delete artists endpoint consumption, list size = {}", request.artist_codes().size());
         return ResponseEntity.ok(artistService.deleteArtists(request.artist_codes()));
     }

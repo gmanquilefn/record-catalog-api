@@ -28,7 +28,7 @@ CREATE TABLE public.label (
     PRIMARY KEY (label_id)
 );
 
---DROP TABLE public.album;
+DROP TABLE public.album;
 
 CREATE TABLE public.album (
     album_id serial NOT NULL,
@@ -38,12 +38,13 @@ CREATE TABLE public.album (
     album_year numeric(4),
     genre varchar,
     style varchar,
+    description text,
     track_list json,
     PRIMARY KEY (album_id),
     CONSTRAINT fk_artist FOREIGN KEY (artist_id) REFERENCES public.artist(artist_id)
 );
 
---DROP TABLE public.album_release;
+DROP TABLE public.album_release;
 
 CREATE TABLE public.album_release (
     release_id serial NOT NULL,

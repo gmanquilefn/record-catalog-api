@@ -34,9 +34,26 @@ public class AlbumEntity {
     @Column(name = "style")
     private String style;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "track_list")
     private String trackList;
 
     @OneToMany(mappedBy = "album")
     private Set<AlbumReleaseEntity> albumReleases;
+
+    public AlbumEntity(ArtistEntity artist, String title, String code, Integer albumYear, String genre, String style, String description, String trackList) {
+        this.artist = artist;
+        this.title = title;
+        this.code = code;
+        this.albumYear = albumYear;
+        this.genre = genre;
+        this.style = style;
+        this.description = description;
+        this.trackList = trackList;
+    }
+
+    public AlbumEntity() {
+    }
 }
