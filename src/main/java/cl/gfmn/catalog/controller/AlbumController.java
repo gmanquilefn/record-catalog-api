@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Album requests")
 @RestController
-@RequestMapping("/api/v1/album")
+@RequestMapping("/api/v1/catalog/album")
 @RequiredArgsConstructor
 public class AlbumController {
 }

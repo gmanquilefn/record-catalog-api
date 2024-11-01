@@ -1,3 +1,7 @@
+--DROP DATABASE recordcatalog;
+
+CREATE DATABASE recordcatalog;
+
 --DROP TABLE public.artist;
 
 CREATE TABLE public.artist (
@@ -28,7 +32,7 @@ CREATE TABLE public.label (
     PRIMARY KEY (label_id)
 );
 
-DROP TABLE public.album;
+--DROP TABLE public.album;
 
 CREATE TABLE public.album (
     album_id serial NOT NULL,
@@ -44,7 +48,7 @@ CREATE TABLE public.album (
     CONSTRAINT fk_artist FOREIGN KEY (artist_id) REFERENCES public.artist(artist_id)
 );
 
-DROP TABLE public.album_release;
+--DROP TABLE public.album_release;
 
 CREATE TABLE public.album_release (
     release_id serial NOT NULL,
